@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14231b"><meta name="description" content="Seu painel pessoal de esportes, rotina, metas e bem-estar."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Meu Ritmo"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"><title>Meu Ritmo — painel pessoal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#inicio"><span class="brand-mark">↗</span><span>MEU<span class="brand-light">RITMO</span><small>MOVE · TRACK · REPEAT</small></span></a>
+    <div class="side-label">MENU PRINCIPAL</div>
+    <nav id="nav">
+      <button class="nav-item active" data-page="inicio"><span>◫</span>Visão geral</button>
+      <button class="nav-item" data-page="agenda"><span>▦</span>Minha agenda</button>
+      <button class="nav-item" data-page="lugares"><span>◎</span>Lugares dos sonhos</button>
+      <button class="nav-item" data-page="compras"><span>♡</span>Lista de desejos</button>
+      <button class="nav-item" data-page="mercado"><span>☷</span>Lista de compras</button>
+      <button class="nav-item" data-page="cardapio"><span>♧</span>Cardápio</button>
+      <button class="nav-item" data-page="esportes"><span>↗</span>Esportes</button>
+      <button class="nav-item" data-page="curiosidades"><span>✧</span>Curiosidades</button>
+      <button class="nav-item" data-page="receitas"><span>♨</span>Receitas</button>
+      <button class="nav-item" data-page="metas"><span>✳</span>Sonhos & metas</button>
+      <button class="nav-item" data-page="financas"><span>◉</span>Meu dinheiro</button>
+    </nav><p>Movimento todo dia.<br>Progresso no seu ritmo.</p><span>CONSISTÊNCIA É PERFORMANCE</span></div>
+    <div class="profile"><div class="avatar">↗</div><div><strong>Meu painel</strong><small>Movimento e performance</small></div><span class="profile-dots">•••</span></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb">MEU ESPAÇO <span>/</span> <b id="crumb">VISÃO GERAL</b></div><div class="top-actions"><span class="cloud-status" id="cloud-status" aria-live="polite">SALVO NESTE DISPOSITIVO</span><button class="cloud-logout" id="cloud-logout" type="button" hidden>Sair</button><span id="today-label"></span><button class="icon-button" id="search-btn" title="Buscar">⌕</button><button class="icon-button" id="quick-add" title="Adicionar">＋</button><div class="avatar avatar-small">↗</div></div></header>
+    <div class="page-content" id="content"></div>
+  </main>
+</div>
+<dialog id="entry-dialog"><form method="dialog" id="entry-form"><div class="modal-head"><div><span class="eyebrow">UM NOVO COMEÇO</span><h2 id="modal-title">Adicionar item</h2></div><button class="icon-button close" value="cancel">×</button></div><div id="form-fields" class="form-fields"></div><div class="modal-actions"><button class="button secondary" value="cancel">Cancelar</button><button class="button primary" id="save-entry" value="default">Salvar</button></div></form></dialog>
+<div class="toast" id="toast"></div>
+<div class="auth-gate" id="auth-gate" hidden><form class="auth-card" id="auth-form"><div class="auth-mark">↗</div><span class="eyebrow">SEU ESPAÇO PESSOAL</span><h1>Entre no seu ritmo.</h1><p>Faça login para acessar e sincronizar suas atividades em todos os seus dispositivos.</p><label for="auth-password">Sua senha</label><input id="auth-password" name="password" type="password" autocomplete="current-password" required><button class="button primary" type="submit">Entrar no meu espaço <span>→</span></button><div class="auth-message" id="auth-message" role="status"></div><small>Seus registros são protegidos e ficam salvos na nuvem.</small></form></div>
+
+<script src="app.js"></script>
+</body></html>
