@@ -114,3 +114,9 @@ body{font-size:16px}
 .stat-number{font-size:26px}
 .section-heading h2{font-size:19px}
 .card-title{font-size:16px}
+.wishlist-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0 17px;padding:18px 20px;background:#142a20;border-radius:14px;color:#fff}
+.wishlist-summary>div{display:grid;gap:5px}
+.wishlist-summary span{font-size:11px;letter-spacing:.8px;color:#c5d4c6;font-weight:700}
+.wishlist-summary strong{font:700 25px Manrope;color:#c8f45b}
+.wishlist-summary small{font-size:12px;color:#b2c0b5;line-height:1.45}
+@media(max-width:760px){.wishlist-summary{grid-template-columns:1fr;padding:15px}.wishlist-summary strong{font-size:22px}}
