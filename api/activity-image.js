@@ -7,7 +7,7 @@ export const config = {
 
 const BUCKET = 'activity-images';
 const MIME_EXTENSIONS = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
-const IMAGE_PATH = /^activities\/[0-9a-f-]{36}\.(?:jpg|png|webp)$/i;
+const IMAGE_PATH = /^(?:activities|destinations)\/[0-9a-f-]{36}\.(?:jpg|png|webp)$/i;
 
 function storageConfig() {
   const base = process.env.SUPABASE_URL?.replace(/\/+$/, '');
@@ -40,7 +40,8 @@ export default async function handler(request, response) {
       if (!extension || !/^[A-Za-z0-9+/]+=*$/.test(encoded)) return response.status(400).json({ error: 'Formato de imagem inválido.' });
       const bytes = Buffer.from(encoded, 'base64');
       if (!bytes.length || bytes.length > 1_300_000) return response.status(413).json({ error: 'A imagem ficou grande demais. Tente um print menor.' });
-      const path = `activities/${randomUUID()}.${extension}`;
+      const collection = ['activities', 'destinations'].includes(request.body?.collection) ? request.body.collection : 'activities';
+      const path = `${collection}/${randomUUID()}.${extension}`;
       const upload = await fetch(`${base}/storage/v1/object/${BUCKET}/${escapedPath(path)}`, {
         method: 'POST',
         headers: { ...headers, 'Content-Type': contentType, 'x-upsert': 'false' },
