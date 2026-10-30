@@ -121,3 +121,5 @@ body{font-size:16px}
 .wishlist-summary small{font-size:12px;color:#b2c0b5;line-height:1.45}
 @media(max-width:760px){.wishlist-summary{grid-template-columns:1fr;padding:15px}.wishlist-summary strong{font-size:22px}}
 .field input[readonly]{background:#edf3e9;color:#355d4c;font-weight:700}
+
+.finance-month-controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.finance-month-picker{min-height:36px;border:1px solid #e5e8e2;border-radius:9px;background:#fff;color:#52675a;padding:6px 9px;font:500 11px 'DM Sans'}.finance-month-controls .icon-button{font-size:21px}.finance-month-controls .button{padding:9px 11px}@media(max-width:760px){.finance-month-controls{justify-content:flex-start}.finance-month-controls .button{padding:9px}}
