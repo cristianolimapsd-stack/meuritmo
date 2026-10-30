@@ -1,4 +1,4 @@
-const CACHE_NAME = 'meu-ritmo-shell-v6';
+const CACHE_NAME = 'meu-ritmo-shell-v7';
 const SHELL = [
   '/',
   '/index.html',
