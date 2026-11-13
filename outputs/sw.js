@@ -1,9 +1,10 @@
-const CACHE_NAME = 'meu-ritmo-shell-v8';
+const CACHE_NAME = 'meu-ritmo-shell-v9';
 const SHELL = [
   '/',
   '/index.html',
   '/style.css',
   '/app.js',
+  '/training.js',
   '/hyrox-plan-data.js',
   '/manifest.webmanifest',
   '/icons/icon-192.png',
