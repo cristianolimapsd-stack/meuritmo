@@ -11,20 +11,28 @@
 <div class="app-shell">
   <aside class="sidebar">
     <a class="brand" href="#inicio"><span class="brand-mark">↗</span><span>MEU<span class="brand-light">RITMO</span><small>MOVE · TRACK · REPEAT</small></span></a>
-    <div class="side-label">MENU PRINCIPAL</div>
     <nav id="nav">
-      <button class="nav-item active" data-page="inicio"><span>◫</span>Visão geral</button>
-      <button class="nav-item" data-page="agenda"><span>▦</span>Minha agenda</button>
-      <button class="nav-item" data-page="lugares"><span>◎</span>Lugares dos sonhos</button>
-      <button class="nav-item" data-page="compras"><span>♡</span>Lista de desejos</button>
-      <button class="nav-item" data-page="mercado"><span>☷</span>Lista de compras</button>
-      <button class="nav-item" data-page="cardapio"><span>♧</span>Cardápio</button>
-      <button class="nav-item" data-page="esportes"><span>↗</span>Esportes</button>
-      <button class="nav-item" data-page="treinos"><span>▤</span>Plano HYROX</button>
-      <button class="nav-item" data-page="curiosidades"><span>✧</span>Curiosidades</button>
-      <button class="nav-item" data-page="receitas"><span>♨</span>Receitas</button>
-      <button class="nav-item" data-page="metas"><span>✳</span>Sonhos & metas</button>
-      <button class="nav-item" data-page="financas"><span>◉</span>Meu dinheiro</button>
+      <div class="nav-group"><div class="side-label">INÍCIO</div>
+        <button class="nav-item active" data-page="inicio"><span>◫</span>Visão geral</button>
+        <button class="nav-item" data-page="agenda"><span>▦</span>Minha agenda</button>
+      </div>
+      <div class="nav-group"><div class="side-label">TREINO & SAÚDE</div>
+        <button class="nav-item" data-page="esportes"><span>↗</span>Esportes</button>
+        <button class="nav-item" data-page="treinos"><span>▤</span>Plano HYROX</button>
+        <button class="nav-item" data-page="cargas"><span>🏋</span>Meu treino</button>
+        <button class="nav-item" data-page="progresso"><span>⌁</span>Progresso</button>
+        <button class="nav-item" data-page="medidas"><span>◉</span>Medidas & check-in</button>
+        <button class="nav-item" data-page="cardapio"><span>♧</span>Cardápio</button>
+      </div>
+      <div class="nav-group"><div class="side-label">EXPLORAR & ORGANIZAR</div>
+        <button class="nav-item" data-page="lugares"><span>◎</span>Lugares dos sonhos</button>
+        <button class="nav-item" data-page="compras"><span>♡</span>Lista de desejos</button>
+        <button class="nav-item" data-page="mercado"><span>☷</span>Lista de compras</button>
+        <button class="nav-item" data-page="receitas"><span>♨</span>Receitas</button>
+        <button class="nav-item" data-page="metas"><span>✳</span>Sonhos & metas</button>
+        <button class="nav-item" data-page="curiosidades"><span>✧</span>Curiosidades</button>
+        <button class="nav-item" data-page="financas"><span>◌</span>Meu dinheiro</button>
+      </div>
     </nav><div class="sidebar-bottom"><p>Movimento todo dia.<br>Progresso no seu ritmo.</p><span>CONSISTÊNCIA É PERFORMANCE</span></div>
     <div class="profile"><div class="avatar">↗</div><div><strong>Meu painel</strong><small>Movimento e performance</small></div><span class="profile-dots">•••</span></div>
   </aside>
@@ -39,4 +47,6 @@
 
 <script src="hyrox-plan-data.js"></script>
 <script src="app.js"></script>
+<script src="training.js"></script>
 </body></html>
+
