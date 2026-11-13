@@ -1,6 +1,7 @@
+[README.md](https://github.com/user-attachments/files/34787280/README.md)
 # Meu Ritmo
 
-Painel pessoal de esportes, agenda, destinos, metas, refeições e listas. O visual foi redesenhado com uma identidade atlética e foco no movimento.
+Painel pessoal de esportes, agenda, destinos, metas, refeições e listas. Inclui um centro de treino com registro de musculação por série, sessões, peso, medidas e fotos, check-in diário, aderência ao cardápio, suplementos, alertas e resumo semanal. O plano HYROX foi atualizado para o Ciclo 1 v6 (13/11–13/12/2026), com calendário semanal, fichas de força, corrida progressiva, escada e wall balls, contatos de dezembro com as estações, teste leve de 12/12 e ajustes do cardápio. O visual foi redesenhado com uma identidade atlética e foco no movimento.
 
 ## Publicar manualmente
 
@@ -44,6 +45,7 @@ O Meu Ritmo abrirá em uma janela própria com ícone na tela inicial, sem preci
 - A API valida uma sessão HttpOnly e faz a leitura e gravação no Supabase pelo servidor.
 - A chave secreta do Supabase não aparece no site público.
 - As alterações são salvas no navegador e sincronizadas com o Supabase automaticamente. Os prints das atividades são comprimidos no navegador antes do envio e ficam no Storage privado.
+- Os registros de musculação, corpo, check-ins, refeições e suplementos seguem o mesmo salvamento e sincronização do painel; fotos de progresso ficam no Storage privado quando o Supabase está configurado.
 - No primeiro acesso, se a tabela ainda estiver vazia, o site usa os dados deste projeto para inicializar o cardápio, as receitas e a lista de compras. Se houver dados antigos neste navegador, eles são enviados para a nuvem nessa primeira conexão.
 - O botão de backup do painel continua disponível.
 - Abrir `outputs/index.html` diretamente funciona no modo local, salvando neste navegador. A sincronização entre dispositivos funciona no endereço da Vercel.
