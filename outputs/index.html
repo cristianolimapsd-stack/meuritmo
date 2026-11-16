@@ -25,7 +25,7 @@
         <button class="nav-item" data-page="cardapio"><span class="nav-icon">♧</span><span class="nav-label">Cardápio</span></button>
       </div>
       <div class="nav-group"><div class="side-label">EXPLORAR & ORGANIZAR</div>
-        <button class="nav-item" data-page="lugares"><span class="nav-icon">◎</span><span class="nav-label">Lugares dos sonhos</span></button>
+        <button class="nav-item" data-page="lugares"><span class="nav-icon">✈</span><span class="nav-label">Viagens & eventos</span></button>
         <button class="nav-item" data-page="compras"><span class="nav-icon">♡</span><span class="nav-label">Lista de desejos</span></button>
         <button class="nav-item" data-page="mercado"><span class="nav-icon">☷</span><span class="nav-label">Lista de compras</span></button>
         <button class="nav-item" data-page="receitas"><span class="nav-icon">♨</span><span class="nav-label">Receitas</span></button>
@@ -41,11 +41,13 @@
     <div class="page-content" id="content"></div>
   </main>
 </div>
+<dialog id="plan-move-dialog"><form method="dialog" id="plan-move-form"><div class="modal-head"><div><span class="eyebrow">AJUSTE DA SEMANA</span><h2>Mudar dia do treino</h2></div><button class="icon-button close" type="button" data-close-plan-move aria-label="Fechar">×</button></div><p id="plan-move-help" class="card-subtitle">Escolha outro dia desta semana para esta sessão.</p><input type="hidden" id="plan-move-id"><div class="field"><label for="plan-move-date">Novo dia</label><input id="plan-move-date" name="date" type="date" required></div><div class="modal-actions"><button class="button secondary" type="button" data-close-plan-move>Cancelar</button><button class="button primary" type="submit">Salvar novo dia</button></div></form></dialog>
 <dialog id="entry-dialog"><form method="dialog" id="entry-form"><div class="modal-head"><div><span class="eyebrow">UM NOVO COMEÇO</span><h2 id="modal-title">Adicionar item</h2></div><button class="icon-button close" type="button" data-close-dialog aria-label="Fechar">×</button></div><div id="form-fields" class="form-fields"></div><div class="modal-actions"><button class="button secondary" type="button" data-close-dialog>Cancelar</button><button class="button primary" id="save-entry" value="default">Salvar</button></div></form></dialog>
 <div class="toast" id="toast"></div>
 <div class="auth-gate" id="auth-gate" hidden><form class="auth-card" id="auth-form"><div class="auth-mark">↗</div><span class="eyebrow">SEU ESPAÇO PESSOAL</span><h1>Entre no seu ritmo.</h1><p>Faça login para acessar e sincronizar suas atividades em todos os seus dispositivos.</p><label for="auth-password">Sua senha</label><input id="auth-password" name="password" type="password" autocomplete="current-password" required><button class="button primary" type="submit">Entrar no meu espaço <span>→</span></button><div class="auth-message" id="auth-message" role="status"></div><small>Seus registros são protegidos e ficam salvos na nuvem.</small></form></div>
 
 <script src="hyrox-plan-data.js"></script>
+<script src="travel-ui.js"></script>
 <script src="app.js"></script>
 <script src="training.js"></script>
 </body></html>
