@@ -1,23 +1,23 @@
 const hyroxPlan = {
-  planVersion: 'v6',
+  planVersion: 'v9',
   title: 'HYROX São Paulo · Ciclo 1',
   eventDate: '2027-05-07',
   eventLabel: '7 e 8 de maio de 2027 · Open Solo',
   cycleStart: '2026-11-13',
   cycleEnd: '2026-12-13',
-  goal: 'Ganhar força e massa muscular, construir base aeróbica sem lesão e aprender a técnica das estações.',
+  goal: 'Prioridade em força e massa muscular, com três corridas fáceis por semana e progressão segura. O treino específico de HYROX entra no Ciclo 2, a partir de 14/12.',
   targets: [
-    ['Força e massa muscular', 'Prioridade do Ciclo 1'],
-    ['Corrida fácil', 'Esforço 4–5/10 · fale frases completas'],
+    ['Força e massa muscular', 'Prioridade até 13/12 · foco em ombros, peito, costas e braços'],
+    ['Corrida fácil', '3 vezes/semana · esforço 4–5/10 · fale frases completas'],
     ['Proteína', 'Mínimo de 120 g por dia'],
     ['Sono', '7–8 h · referência 21h–22h'],
     ['Passos', 'Meta diária de 7.000–8.000'],
   ],
   phases: [
-    { name: '1 · Base', period: '13/11–13/12/2026', focus: 'Músculo, base aeróbica, core e pegada. Em dezembro, 1 contato semanal com as estações em academia equipada.' },
-    { name: '2 · HYROX', period: 'jan–fev/2027', focus: 'Cerca de 17 semanas até a prova. 2 treinos específicos por semana, corrida contínua e musculação 2–3 vezes.' },
-    { name: '3 · Específica', period: 'mar–abr/2027', focus: 'Simulações parciais e completas, ritmo de prova e manutenção da força.' },
-    { name: '4 · Taper', period: 'fim de abr–7/05/2027', focus: 'Redução de fadiga e preparação para a prova.' },
+    { name: '1 · Base', period: '13/11–13/12/2026', focus: 'Ciclo 1: quatro sessões de musculação, sábado obrigatório de ombros e braços e três corridas fáceis. Sem escada, wall balls ou estações específicas.' },
+    { name: '2 · HYROX', period: 'a partir de 14/12/2026', focus: 'Ciclo 2: manter o foco em força e corpo e acrescentar 1 sessão semanal de estações, com técnica e cargas reais na academia.' },
+    { name: '3 · Específica', period: 'jan–abr/2027', focus: 'Evoluir para 2 sessões específicas por semana, corrida contínua e simulações parciais, mantendo 2–3 sessões de força.' },
+    { name: '4 · Taper', period: 'fim de abr–7/05/2027', focus: 'Reduzir a fadiga e chegar à prova recuperado.' },
   ],
   stations: [
     ['SkiErg', '1.000 m'], ['Sled Push', '50 m · referência Open masculino: 152 kg com trenó'],
@@ -26,45 +26,40 @@ const hyroxPlan = {
     ['Sandbag Lunges', '100 m · referência Open masculino: 20 kg'], ['Wall Balls', '100 repetições · referência Open masculino: 6 kg / alvo 3 m'],
   ],
   strength: [
-    { id: 'upper-a', title: 'Superiores A', day: 'Segunda · 12h', duration: '≈65 min', objective: 'Peito, ombros, tríceps, trapézio e abdômen (empurrar)', exercises: [
-      ['Supino reto com halteres (ou máquina)', '8–10', '3·4·4·2'], ['Remada sentada na polia, pegada neutra', '10–12', '3·3·3·2'], ['Desenvolvimento com halteres sentado', '8–10', '3·3·3·2'], ['Crucifixo na máquina (peck deck)', '12–15', '2·2·2·2'], ['Elevação lateral com halteres', '12–15', '3·3·3·2'], ['Rosca direta com barra W', '10–12', '3·3·3·2'], ['Tríceps na corda', '12–15', '2·3·3·2'], ['Encolhimento com halteres (trapézio)', '12–15', '2·3·3·2'], ['Abdominal na polia, ajoelhado', '10–15', '2·3·3·2'], ['Pallof press (cabo ou elástico)', '10 por lado', '2·2·2·2'],
+    { id: 'upper-a', title: 'Superiores A', day: 'Segunda · 12h', duration: '≈55 min', objective: 'Peito, costas, bíceps, tríceps e abdômen', exercises: [
+      ['Supino inclinado com halteres (banco a 30°)', '8–10', '3·4·4·2'], ['Remada sentada na polia, pegada neutra', '10–12', '3·4·4·2'], ['Crucifixo na máquina (peck deck)', '12–15', '2·2·2·2'], ['Elevação lateral com halteres', '12–15', '2·3·3·2'], ['Rosca direta com barra W', '10–12', '3·3·3·2'], ['Tríceps na corda', '12–15', '2·3·3·2'], ['Abdominal na polia, ajoelhado', '10–15', '2·3·3·2'],
     ]},
-    { id: 'lower-a', title: 'Inferiores A', day: 'Terça · 12h', duration: '≈50 min', objective: 'Força de pernas: agachamento e posterior de coxa', exercises: [
+    { id: 'lower-a', title: 'Inferiores A', day: 'Terça · 12h', duration: '≈50 min', objective: 'Força de pernas, agachamento e posterior de coxa', exercises: [
       ['Agachamento livre (goblet ou barra)', '6–8', '3·4·4·2'], ['Levantamento terra romeno', '8–10', '3·3·3·2'], ['Passada reversa com halteres', '8 por perna', '2·2·2·2'], ['Panturrilha em pé', '12–15', '3·3·3·2'], ['Prancha lateral', '30 s por lado', '2·2·2·2'],
     ]},
-    { id: 'upper-b', title: 'Superiores B', day: 'Quarta · 12h', duration: '≈65 min', objective: 'Costas, ombro posterior, bíceps, antebraço, abdômen e pegada', exercises: [
-      ['Puxada frontal, pegada pronada aberta', '8–10', '3·4·4·2'], ['Supino inclinado com halteres (banco a 30°)', '8–10', '3·3·3·2'], ['Remada unilateral com halter (serrote)', '8–10 por lado', '3·3·3·2'], ['Crucifixo inverso na máquina (peck deck reverso)', '12–15', '3·3·3·2'], ['Rosca martelo com halteres', '10–12', '2·2·2·2'], ['Tríceps francês de costas na polia (corda)', '10–12', '2·3·3·2'], ['Rosca inversa com barra W (antebraço)', '12–15', '2·2·3·2'], ['Elevação de joelhos pendurado (ou no banco)', '8–12', '2·3·3·2'], ['Farmers hold com halteres pesados', '30–40 s', '3·3·3·2'], ['Dead hang (pendurar na barra)', '20–40 s', '2·2·2·2'],
+    { id: 'upper-b', title: 'Superiores B', day: 'Quarta · 12h', duration: '≈60 min', objective: 'Costas, peitoral superior, ombros, braços, abdômen e pegada', exercises: [
+      ['Puxada frontal, pegada pronada aberta', '8–10', '3·4·4·2'], ['Supino reto com halteres (ou máquina)', '8–10', '3·3·3·2'], ['Remada unilateral com halter (serrote)', '8–10 por lado', '3·3·3·2'], ['Crucifixo inverso na máquina (peck deck reverso)', '12–15', '3·3·3·2'], ['Elevação lateral com halteres', '12–15', '2·3·3·2'], ['Rosca martelo com halteres', '10–12', '2·2·2·2'], ['Tríceps francês de costas na polia (corda)', '10–12', '2·3·3·2'], ['Rosca inversa com barra W (antebraço)', '12–15', '2·2·3·2'], ['Elevação de joelhos pendurado (ou no banco)', '8–12', '2·3·3·2'], ['Farmers hold com halteres pesados', '30–40 s', '3·3·3·2'],
     ]},
-    { id: 'lower-b', title: 'Inferiores B', day: 'Sexta · 12h', duration: '≈50 min', objective: 'Pernas em volume moderado, trabalho unilateral e glúteos', exercises: [
-      ['Leg press', '10–12', '3·4·4·2'], ['Step-up com halteres', '8–10 por perna', '3·3·3·2'], ['Cadeira extensora', '12–15', '2·2·3·2'], ['Cadeira flexora', '10–12', '3·3·3·2'], ['Hip thrust', '8–10', '3·3·3·2'], ['Panturrilha sentada', '15', '3·3·3·2'], ['Dead bug', '8 por lado', '3·3·3·2'],
+    { id: 'lower-b', title: 'Inferiores B', day: 'Sexta · 12h', duration: '≈50 min', objective: 'Pernas em volume moderado, glúteos e core', exercises: [
+      ['Leg press', '10–12', '3·4·4·2'], ['Cadeira extensora', '12–15', '2·2·3·2'], ['Cadeira flexora', '10–12', '3·4·4·2'], ['Hip thrust', '8–10', '3·3·3·2'], ['Panturrilha sentada', '15', '3·3·3·2'], ['Dead bug', '8 por lado', '3·3·3·2'],
     ]},
-    { id: 'arms', title: 'Ombro, braço e antebraço', day: 'Sábado à tarde · recomendado desde a semana 1', duration: '≈30 min', objective: 'Volume extra de ombro, braço e antebraço. Pule se dormiu menos de 6 h ou se pernas/costas estiverem pesadas.', exercises: [
-      ['Elevação lateral com halteres', '15', '2·3·3·2'], ['Face pull na polia alta', '15', '2·3·3·2'], ['Rosca alternada no banco inclinado', '12', '2·2·3·2'], ['Tríceps na corda', '15', '2·2·3·2'], ['Rosca de punho com halteres (antebraço)', '15–20', '2·2·3·2'],
+    { id: 'arms', title: 'Ombros, braços e antebraço', day: 'Sábado à tarde · obrigatório desde a semana 1', duration: '≈50 min', objective: 'Dia principal de ombros, trapézio, braços e antebraço. Se estiver sem tempo, corte primeiro rosca de punho e tríceps; mantenha desenvolvimento e elevações laterais.', exercises: [
+      ['Desenvolvimento com halteres sentado', '8–10', '3·3·3·2'], ['Elevação lateral com halteres', '12–15', '3·4·4·2'], ['Elevação lateral na polia baixa, um braço', '12–15', '2·3·3·2'], ['Face pull na polia alta', '15', '2·3·3·2'], ['Encolhimento com halteres (trapézio)', '12–15', '2·3·3·2'], ['Rosca alternada no banco inclinado', '12', '2·2·3·2'], ['Tríceps na corda', '15', '2·2·2·2'], ['Rosca de punho com halteres (antebraço)', '15–20', '2·2·3·2'],
     ]},
   ],
   running: [
-    { week: 'Semana 0', dates: '13–15/11', monday: '—', saturday: '14/11 · 3 min / 1 min × 6', total: '24 min' },
-    { week: 'Semana 1', dates: '16–22/11', monday: '4 min / 1 min × 5', saturday: '4 min / 1 min × 6', total: '25 e 30 min' },
-    { week: 'Semana 2', dates: '23–29/11', monday: '5 min / 1 min × 5', saturday: '6 min / 1 min × 4', total: '30 e 28 min' },
-    { week: 'Semana 3', dates: '30/11–6/12', monday: '8 min / 1 min × 3', saturday: '10 min / 1 min × 3', total: '27 e 33 min' },
-    { week: 'Semana 4 · recuperação', dates: '7–13/12', monday: '4 min / 1 min × 5', saturday: '12/12 · teste leve contínuo de 20 min', total: '25 e 20 min' },
+    { week: 'Semana 0', dates: '13–15/11', monday: '—', wednesday: '—', saturday: '14/11 · 3 min correndo / 1 min caminhando × 6', total: '24 min totais' },
+    { week: 'Semana 1', dates: '16–22/11', monday: '4 min / 1 min × 5', wednesday: '3 min / 1 min × 5', saturday: '4 min / 1 min × 6', total: '75 min totais' },
+    { week: 'Semana 2', dates: '23–29/11', monday: '5 min / 1 min × 5', wednesday: '4 min / 1 min × 5', saturday: '6 min / 1 min × 4', total: '83 min totais' },
+    { week: 'Semana 3', dates: '30/11–6/12', monday: '8 min / 1 min × 3', wednesday: '5 min / 1 min × 4', saturday: '10 min / 1 min × 3', total: '84 min totais' },
+    { week: 'Semana 4 · recuperação', dates: '7–13/12', monday: '4 min / 1 min × 5', wednesday: '3 min / 1 min × 5', saturday: '12/12 · teste leve contínuo de 20 min', total: '65 min totais' },
   ],
-  stairs: [
-    ['Semanas 1–2', '4 × (2 min de escada + 6 wall balls + 1 min caminhando)', 'Esforço 5–6/10'],
-    ['Semana 3', '5 × (2 min de escada + 8 wall balls + 1 min caminhando)', 'Esforço 5–6/10'],
-    ['Semana 4 · recuperação', '3 × (2 min de escada + 6 wall balls + 1 min caminhando)', 'Esforço 5/10'],
-  ],
+  stairs: [],
   safety: [
-    'Corrida fácil: esforço 4–5/10 e conversa em frases completas. Termine sentindo que poderia continuar.',
-    'Antes e depois de correr: 5 min caminhando. Se a perna estiver muito dolorida, troque por caminhada.',
-    'Se uma corrida passar de esforço 6/10, repita a semana anterior em vez de avançar. O aumento do tempo fica em cerca de 10–15% por semana.',
-    'Dor articular acima de 3/10 por mais de 48 h ou sono abaixo de 6 h em duas noites: reduza o volume em cerca de 30% por uma semana.',
-    'Se as pernas estiverem muito doloridas da sessão de terça, troque a corrida de quarta por caminhada.',
+    'Corrida fácil: esforço 4–5/10; fale frases completas e termine sentindo que poderia continuar.',
+    'Antes e depois de correr, caminhe 5 minutos. Se as pernas estiverem muito doloridas, troque por caminhada.',
+    'Se o esforço passar de 6/10 ou surgir dor na canela, joelho ou tendão, repita a semana anterior. Não aumente a corrida à força.',
+    'Dor articular acima de 3/10 por mais de 48 horas, duas noites abaixo de 6 horas de sono ou pernas sem recuperação: reduza o volume em cerca de 30% por uma semana.',
+    'Se não conseguir completar o mínimo de repetições por duas sessões seguidas, reduza a carga em 5–10% e reconstrua.',
     'Dor aguda, tontura ou desconforto no peito: interrompa a sessão e procure atendimento.',
-    'Aquecimento de musculação: 5 min de caminhada ou bicicleta e séries leves. Trabalhe com 2–3 repetições sobrando.',
+    'Aqueça a musculação por 5 minutos e faça séries leves. Mantenha 2–3 repetições em reserva; sem falha neste ciclo.',
   ],
 };
-
 const hyroxMenu = {
   goals: { calories: '≈2.500 kcal/dia', protein: 'mínimo 120 g/dia', water: '≈2,2–2,6 L/dia + mais nos dias de corrida', weight: 'tendência desejada: +0,15 a 0,3 kg/semana' },
   restrictions: 'Arroz parboilizado · queijo coalho como único queijo · patinho como carne moída · sem peixe ou frutos do mar.',
