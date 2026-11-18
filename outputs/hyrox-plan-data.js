@@ -1,5 +1,5 @@
 const hyroxPlan = {
-  planVersion: 'v9',
+  planVersion: 'v11',
   title: 'HYROX São Paulo · Ciclo 1',
   eventDate: '2027-05-07',
   eventLabel: '7 e 8 de maio de 2027 · Open Solo',
@@ -14,7 +14,7 @@ const hyroxPlan = {
     ['Passos', 'Meta diária de 7.000–8.000'],
   ],
   phases: [
-    { name: '1 · Base', period: '13/11–13/12/2026', focus: 'Ciclo 1: quatro sessões de musculação, sábado obrigatório de ombros e braços e três corridas fáceis. Sem escada, wall balls ou estações específicas.' },
+    { name: '1 · Base', period: '13/11–13/12/2026', focus: 'Ciclo 1: quatro sessões de força durante a semana, mais sábado obrigatório de ombros, trapézio e braços, além de três corridas fáceis. Sem escada, wall balls ou estações específicas.' },
     { name: '2 · HYROX', period: 'a partir de 14/12/2026', focus: 'Ciclo 2: manter o foco em força e corpo e acrescentar 1 sessão semanal de estações, com técnica e cargas reais na academia.' },
     { name: '3 · Específica', period: 'jan–abr/2027', focus: 'Evoluir para 2 sessões específicas por semana, corrida contínua e simulações parciais, mantendo 2–3 sessões de força.' },
     { name: '4 · Taper', period: 'fim de abr–7/05/2027', focus: 'Reduzir a fadiga e chegar à prova recuperado.' },
@@ -27,19 +27,19 @@ const hyroxPlan = {
   ],
   strength: [
     { id: 'upper-a', title: 'Superiores A', day: 'Segunda · 12h', duration: '≈55 min', objective: 'Peito, costas, bíceps, tríceps e abdômen', exercises: [
-      ['Supino inclinado com halteres (banco a 30°)', '8–10', '3·4·4·2'], ['Remada sentada na polia, pegada neutra', '10–12', '3·4·4·2'], ['Crucifixo na máquina (peck deck)', '12–15', '2·2·2·2'], ['Elevação lateral com halteres', '12–15', '2·3·3·2'], ['Rosca direta com barra W', '10–12', '3·3·3·2'], ['Tríceps na corda', '12–15', '2·3·3·2'], ['Abdominal na polia, ajoelhado', '10–15', '2·3·3·2'],
+      ['Supino inclinado com halteres (banco a 30°)', '8–10', '3·4·4·2'], ['Remada sentada na polia, pegada neutra', '10–12', '3·4·4·2'], ['Crucifixo na máquina (peck deck)', '12–15', '3·3·3·2'], ['Elevação lateral na máquina (ou polia baixa ou halteres)', '12–15', '2·3·3·2'], ['Rosca scott na máquina (ou barra W)', '10–12', '3·3·3·2'], ['Tríceps na corda', '12–15', '2·3·3·2'], ['Abdominal na polia, ajoelhado', '10–15', '2·3·3·2'],
     ]},
     { id: 'lower-a', title: 'Inferiores A', day: 'Terça · 12h', duration: '≈50 min', objective: 'Força de pernas, agachamento e posterior de coxa', exercises: [
-      ['Agachamento livre (goblet ou barra)', '6–8', '3·4·4·2'], ['Levantamento terra romeno', '8–10', '3·3·3·2'], ['Passada reversa com halteres', '8 por perna', '2·2·2·2'], ['Panturrilha em pé', '12–15', '3·3·3·2'], ['Prancha lateral', '30 s por lado', '2·2·2·2'],
+      ['Agachamento livre (goblet ou barra)', '6–8', '3·4·4·2'], ['Levantamento terra romeno', '8–10', '3·3·3·2'], ['Afundo no Smith (ou passada reversa com halteres)', '8 por perna', '2·2·2·2'], ['Panturrilha em pé na máquina (ou Smith ou degrau)', '12–15', '3·3·3·2'], ['Prancha lateral', '30 s por lado', '2·2·2·2'],
     ]},
-    { id: 'upper-b', title: 'Superiores B', day: 'Quarta · 12h', duration: '≈60 min', objective: 'Costas, peitoral superior, ombros, braços, abdômen e pegada', exercises: [
-      ['Puxada frontal, pegada pronada aberta', '8–10', '3·4·4·2'], ['Supino reto com halteres (ou máquina)', '8–10', '3·3·3·2'], ['Remada unilateral com halter (serrote)', '8–10 por lado', '3·3·3·2'], ['Crucifixo inverso na máquina (peck deck reverso)', '12–15', '3·3·3·2'], ['Elevação lateral com halteres', '12–15', '2·3·3·2'], ['Rosca martelo com halteres', '10–12', '2·2·2·2'], ['Tríceps francês de costas na polia (corda)', '10–12', '2·3·3·2'], ['Rosca inversa com barra W (antebraço)', '12–15', '2·2·3·2'], ['Elevação de joelhos pendurado (ou no banco)', '8–12', '2·3·3·2'], ['Farmers hold com halteres pesados', '30–40 s', '3·3·3·2'],
+    { id: 'upper-b', title: 'Superiores B', day: 'Quarta · 12h', duration: '≈60 min', objective: 'Costas, ombro lateral e posterior, bíceps, antebraço, abdômen e pegada (puxar e postura)', exercises: [
+      ['Puxada frontal, pegada pronada aberta', '8–10', '3·4·4·2'], ['Supino reto na máquina articulada (ou halteres ou Smith)', '8–10', '3·3·3·2'], ['Remada baixa articulada, um braço por vez (ou serrote com halter)', '8–10 por lado', '3·3·3·2'], ['Crucifixo inverso na máquina (peck deck reverso)', '12–15', '3·3·3·2'], ['Elevação lateral com halteres (ou máquina)', '12–15', '2·3·3·2'], ['Rosca martelo na polia com corda (ou halteres)', '10–12', '2·2·2·2'], ['Tríceps francês de costas na polia (corda)', '10–12', '2·3·3·2'], ['Rosca inversa com barra W (antebraço)', '12–15', '2·2·3·2'], ['Elevação de joelhos pendurado (ou cadeira romana)', '8–12', '2·3·3·2'], ['Pullover na polia alta (ou com halter no banco)', '12–15', '2·2·3·2'],
     ]},
     { id: 'lower-b', title: 'Inferiores B', day: 'Sexta · 12h', duration: '≈50 min', objective: 'Pernas em volume moderado, glúteos e core', exercises: [
-      ['Leg press', '10–12', '3·4·4·2'], ['Cadeira extensora', '12–15', '2·2·3·2'], ['Cadeira flexora', '10–12', '3·4·4·2'], ['Hip thrust', '8–10', '3·3·3·2'], ['Panturrilha sentada', '15', '3·3·3·2'], ['Dead bug', '8 por lado', '3·3·3·2'],
+      ['Leg press 45° (ou horizontal)', '10–12', '3·4·4·2'], ['Cadeira extensora', '12–15', '2·2·3·2'], ['Cadeira flexora sentada (ou deitada)', '10–12', '3·4·4·2'], ['Hip thrust na máquina (ou barra ou Smith)', '8–10', '3·3·3·2'], ['Panturrilha sentada (ou leg press)', '15', '3·3·3·2'], ['Dead bug', '8 por lado', '3·3·3·2'],
     ]},
     { id: 'arms', title: 'Ombros, braços e antebraço', day: 'Sábado à tarde · obrigatório desde a semana 1', duration: '≈50 min', objective: 'Dia principal de ombros, trapézio, braços e antebraço. Se estiver sem tempo, corte primeiro rosca de punho e tríceps; mantenha desenvolvimento e elevações laterais.', exercises: [
-      ['Desenvolvimento com halteres sentado', '8–10', '3·3·3·2'], ['Elevação lateral com halteres', '12–15', '3·4·4·2'], ['Elevação lateral na polia baixa, um braço', '12–15', '2·3·3·2'], ['Face pull na polia alta', '15', '2·3·3·2'], ['Encolhimento com halteres (trapézio)', '12–15', '2·3·3·2'], ['Rosca alternada no banco inclinado', '12', '2·2·3·2'], ['Tríceps na corda', '15', '2·2·2·2'], ['Rosca de punho com halteres (antebraço)', '15–20', '2·2·3·2'],
+      ['Desenvolvimento na máquina (ou halteres sentado)', '8–10', '3·3·3·2'], ['Elevação lateral na máquina (ou halteres)', '12–15', '3·4·4·2'], ['Elevação lateral na polia baixa, um braço (ou halter inclinado de lado)', '12–15', '2·3·3·2'], ['Face pull na polia alta', '15', '2·3·3·2'], ['Encolhimento no Smith ou na máquina (trapézio)', '12–15', '2·3·3·2'], ['Rosca alternada no banco inclinado', '12', '2·2·3·2'], ['Extensão de tríceps acima da cabeça na polia (ou halter)', '12–15', '2·2·2·2'], ['Rosca de punho (antebraço) com halteres ou barra', '15–20', '2·2·3·2'],
     ]},
   ],
   running: [
