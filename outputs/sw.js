@@ -1,4 +1,4 @@
-const CACHE_NAME = 'meu-ritmo-shell-v28';
+const CACHE_NAME = 'meu-ritmo-shell-v29';
 const SHELL = [
   '/',
   '/index.html',
@@ -49,6 +49,7 @@ self.addEventListener('fetch', (event) => {
     }));
   }
 });
+
 
 
 
