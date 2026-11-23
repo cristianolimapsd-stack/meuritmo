@@ -5,6 +5,7 @@
   <meta name="theme-color" content="#14231b"><meta name="description" content="Seu painel pessoal de esportes, rotina, metas e bem-estar."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Meu Ritmo"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"><title>Meu Ritmo — painel pessoal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>try{const saved=localStorage.getItem("meuritmo-theme");document.documentElement.dataset.theme=saved==="light"||saved==="dark"?saved:(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}catch{document.documentElement.dataset.theme="dark"}document.querySelector('meta[name="theme-color"]')?.setAttribute("content",document.documentElement.dataset.theme==="light"?"#f2f5f1":"#191d1b")</script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -37,7 +38,7 @@
     
   </aside>
   <main class="main">
-    <header class="topbar"><div class="breadcrumb">MEU ESPAÇO <span>/</span> <b id="crumb">VISÃO GERAL</b></div><div class="top-actions"><span class="cloud-status" id="cloud-status" aria-live="polite">SALVO NESTE DISPOSITIVO</span><button class="cloud-logout" id="cloud-logout" type="button" hidden>Sair</button><span id="today-label"></span><button class="icon-button" id="search-btn" title="Buscar" aria-label="Buscar no app">⌕</button><button class="icon-button" id="quick-add" title="Adicionar" aria-label="Adicionar registro">＋</button><div class="avatar avatar-small">↗</div></div></header>
+    <header class="topbar"><div class="breadcrumb">MEU ESPAÇO <span>/</span> <b id="crumb">VISÃO GERAL</b></div><div class="top-actions"><span class="cloud-status" id="cloud-status" aria-live="polite">SALVO NESTE DISPOSITIVO</span><button class="cloud-logout" id="cloud-logout" type="button" hidden>Sair</button><span id="today-label"></span><button class="icon-button theme-toggle" id="theme-toggle" type="button" title="Alternar tema" aria-label="Ativar modo claro"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg></button><button class="icon-button" id="search-btn" title="Buscar" aria-label="Buscar no app">⌕</button><button class="icon-button" id="quick-add" title="Adicionar" aria-label="Adicionar registro">＋</button><div class="avatar avatar-small">↗</div></div></header>
     <div class="page-content" id="content"></div>
   </main>
 </div>
