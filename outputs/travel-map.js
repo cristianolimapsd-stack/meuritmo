@@ -3,6 +3,7 @@ let tripMapInstance = null;
 let tripMapRequestActive = false;
 let tripMapMessage = '';
 let tripRouteLastRequestAt = 0;
+let tripGeocoderLastRequestAt = 0;
 
 function tripMapEntries(destinationId, date) {
   return (data.tripItinerary || [])
@@ -49,14 +50,15 @@ function tripMapMarkup(destination, cards, itemDate) {
   const stopList = entries.length ? `<ol class="trip-map-stops">${entries.map((item, index) => {
     const query = encodeURIComponent([item.name, item.address, destination.city || destination.name, destinationCountry(destination)].filter(Boolean).join(', '));
     const coords = hasTripMapCoords(item);
-    return `<li><span class="trip-map-stop-number">${index + 1}</span><div><strong>${esc(item.name)}</strong><small>${esc(item.address || 'Endereço ainda não localizado')}</small></div><a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" rel="noopener" aria-label="Abrir ${esc(item.name)} no mapa">↗</a>${coords ? '<i class="trip-map-located" title="Localização encontrada"></i>' : ''}</li>`;
+    const locationLabel = item.address || (item.geocodeError ? 'Não encontrei. Edite e informe o endereço completo.' : 'Endereço ainda não localizado');
+    return `<li><span class="trip-map-stop-number">${index + 1}</span><div><strong>${esc(item.name)}</strong><small>${esc(locationLabel)}</small></div><div class="trip-map-stop-actions"><button type="button" data-edit="tripItinerary" data-id="${esc(item.id)}" aria-label="Corrigir endereço de ${esc(item.name)}">✎</button><a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" rel="noopener" aria-label="Abrir ${esc(item.name)} no mapa">↗</a></div>${coords ? '<i class="trip-map-located" title="Localização encontrada"></i>' : ''}</li>`;
   }).join('')}</ol>` : '<p class="trip-map-empty">Ainda não há passeios nesta data. Adicione uma parada ao roteiro para ver o percurso.</p>';
   const distance = route?.distance ? `${route.distance >= 1000 ? (route.distance / 1000).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' km' : Math.round(route.distance) + ' m'}${route.profile === 'direct' ? ' · linha direta aprox.' : ''}` : '';
   return `<section class="trip-map-panel" data-trip-map-destination="${esc(destination.id)}" data-trip-map-date="${esc(date)}">
     <div class="trip-map-heading"><div><span class="eyebrow">MAPA DO ROTEIRO</span><h3>${esc(dateLabel)}</h3><p>${entries.length} ${entries.length === 1 ? 'parada' : 'paradas'}${distance ? ` · ${esc(distance)}${route?.profile === 'direct' ? '' : ' a pé'}` : addressCount ? ` · ${addressCount} no mapa` : ''}</p></div><button class="button primary" data-trip-map-build ${!entries.length || tripMapRequestActive ? 'disabled' : ''}>${tripMapRequestActive ? 'Localizando…' : '⌖ Localizar & traçar rota'}</button></div>
     <div class="trip-map-day-picker" role="tablist" aria-label="Escolher dia do roteiro">${dayTabs || '<span>Defina as datas da viagem para organizar o mapa por dia.</span>'}</div>
     <div class="trip-map-layout"><div class="trip-map-canvas" id="trip-route-map" role="region" aria-label="Mapa dos passeios do dia"></div><aside class="trip-map-side"><div class="trip-map-side-heading"><strong>Paradas do dia</strong>${distance ? `<span>${esc(distance)}</span>` : ''}</div>${stopList}<p class="trip-map-status" id="trip-map-status" aria-live="polite">${esc(tripMapMessage || (route ? route.profile === 'direct' ? 'O serviço de rotas não respondeu; esta linha liga os pontos em linha reta, sem seguir as ruas.' : 'Percurso a pé calculado pela ordem dos horários.' : addressCount ? 'Pontos localizados. Toque em “Localizar & traçar rota” para calcular o caminho a pé.' : 'Toque em “Localizar & traçar rota” para buscar os endereços e montar o percurso.'))}</p></aside></div>
-    <div class="trip-map-attribution">Mapas © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · rotas a pé via <a href="https://routing.openstreetmap.de/about.html" target="_blank" rel="noopener">FOSSGIS</a> · <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener">corrigir o mapa</a>. Os nomes/endereço são enviados para localizar os pontos quando você solicita.</div>
+    <div class="trip-map-attribution">Mapas © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · rotas a pé via <a href="https://routing.openstreetmap.de/about.html" target="_blank" rel="noopener">FOSSGIS</a> · <a href="https://www.openstreetmap.org/fixthemap" target="_blank" rel="noopener">corrigir o mapa</a>. O endereço é enviado ao serviço de mapas quando você salva uma parada com endereço ou solicita a localização.</div>
   </section>`;
 }
 
@@ -107,20 +109,33 @@ function initTripMap() {
 }
 
 async function geocodeTripItem(item, destination) {
-  const query = [item.name, item.address, destination.city || destination.name, destinationCountry(destination)].filter(Boolean).join(', ');
-  const url = new URL('https://nominatim.openstreetmap.org/search');
-  url.search = new URLSearchParams({ q: query, format: 'jsonv2', limit: '1', addressdetails: '1' });
-  const response = await fetch(url, { headers: { Accept: 'application/json' }, referrerPolicy: 'strict-origin-when-cross-origin' });
-  if (!response.ok) throw new Error('O serviço de endereços está indisponível agora. Tente novamente mais tarde.');
-  const results = await response.json();
-  if (!results.length) return false;
-  item.lat = Number(results[0].lat);
-  item.lon = Number(results[0].lon);
-  item.address = results[0].display_name || item.address || '';
-  return true;
+  const city = destination.city || destination.name;
+  const country = destinationCountry(destination);
+  const typedAddress = String(item.address || '').trim();
+  const candidates = typedAddress
+    ? [typedAddress, [item.name, city, country].filter(Boolean).join(', ')]
+    : [[item.name, city, country].filter(Boolean).join(', '), [item.name, city].filter(Boolean).join(', ')];
+  const queries = [...new Set(candidates.map(value => value.trim()).filter(Boolean))];
+  for (const query of queries) {
+    const wait = Math.max(0, 1100 - (Date.now() - tripGeocoderLastRequestAt));
+    if (wait) await new Promise(resolve => setTimeout(resolve, wait));
+    const url = new URL('https://nominatim.openstreetmap.org/search');
+    url.search = new URLSearchParams({ q: query, format: 'jsonv2', limit: '1', addressdetails: '1' });
+    tripGeocoderLastRequestAt = Date.now();
+    const response = await fetch(url, { headers: { Accept: 'application/json' }, referrerPolicy: 'strict-origin-when-cross-origin' });
+    if (!response.ok) throw new Error('O serviço de endereços está indisponível agora. Tente novamente mais tarde.');
+    const results = await response.json();
+    if (!results.length) continue;
+    item.lat = Number(results[0].lat);
+    item.lon = Number(results[0].lon);
+    item.address = results[0].display_name || typedAddress;
+    delete item.geocodeError;
+    return true;
+  }
+  return false;
 }
 
-async function buildTripMapRoute(destinationId, date) {
+async function buildTripMapRoute(destinationId, date, onlyItemId = null) {
   if (tripMapRequestActive) return;
   const destination = data.lugares.find(item => item.id === destinationId);
   const entries = tripMapEntries(destinationId, date);
@@ -130,12 +145,11 @@ async function buildTripMapRoute(destinationId, date) {
   const button = document.querySelector('[data-trip-map-build]');
   if (button) { button.disabled = true; button.textContent = 'Localizando…'; }
   let lookedUp = 0;
+  const pendingLocations = entries.filter(item => !hasTripMapCoords(item) && (!onlyItemId || item.id === onlyItemId));
   tripMapMessage = 'Preparando a busca dos endereços…';
   try {
-    for (const item of entries) {
-      if (hasTripMapCoords(item)) continue;
-      if (lookedUp) await new Promise(resolve => setTimeout(resolve, 1100));
-      tripMapMessage = `Buscando endereço ${lookedUp + 1} de ${entries.filter(row => !hasTripMapCoords(row)).length}…`; if (status) status.textContent = tripMapMessage;
+    for (const item of pendingLocations) {
+      tripMapMessage = `Buscando endereço ${lookedUp + 1} de ${pendingLocations.length}…`; if (status) status.textContent = tripMapMessage;
       const found = await geocodeTripItem(item, destination);
       lookedUp++;
       save();
